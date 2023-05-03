@@ -29,7 +29,19 @@ import { filterImageFromURL, deleteLocalFiles } from "./util/util";
 
   /**************************************************************************** */
   app.get("/filteredimage", async (req: Request, res: Response) => {
+    const imgUrlKey = "image_url";
     const queryParams = req.query;
+    if (!queryParams.hasOwnProperty(imgUrlKey))
+      return res.status(404).send(`No key ${imgUrlKey} in Query params`);
+
+    try {
+      const path = await filterImageFromURL(queryParams[imgUrlKey]);
+      res.status(200).sendFile(path, () => deleteLocalFiles([path]));
+    } catch (e) {
+      return res
+        .status(500)
+        .send(`Error during download of ${queryParams[imgUrlKey]}`);
+    }
   });
   //! END @TODO1
 
