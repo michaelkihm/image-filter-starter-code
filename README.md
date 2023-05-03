@@ -45,4 +45,4 @@ Prevent requests without valid authentication headers.
 
 ### Custom Domain Name
 
-Link to the endpoint URL for a running elastic beanstalk deployment: http://image-filter-dev22.eu-central-1.elasticbeanstalk.com
+[Link](http://image-filter-dev22.eu-central-1.elasticbeanstalk.com) to the endpoint URL for a running elastic beanstalk deployment
